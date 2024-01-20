@@ -15,7 +15,7 @@ public class PlayerMovement : NetworkBehaviour
     void Update()
     {
         //input
-        if (!IsOwner) { return; }
+        //if (!IsOwner) { return; }
         Vector3 move = new Vector3(0, 0, 0);
         if (Input.GetKey("w")) { move.z += 1f; }
         if (Input.GetKey("a")) { move.x += -1f; }
