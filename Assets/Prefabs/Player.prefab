@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3541445699
+  GlobalObjectIdHash: 3215201270
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b028b9f39276fdf4d82a77e52a3a50eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemy: {fileID: 2132485074034348965, guid: aae53446f0e37c64a88197b4427582ec, type: 3}
   walkingSpeed: 7.5
   runningSpeed: 11.5
   jumpSpeed: 8
@@ -345,3 +346,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 8645034191632579442}
   range: 99
+  dmg: 40

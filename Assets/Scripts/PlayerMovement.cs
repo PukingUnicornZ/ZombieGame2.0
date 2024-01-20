@@ -4,6 +4,8 @@ using UnityEngine;
 using Unity.Netcode;
 public class PlayerMovement : NetworkBehaviour
 {
+    public GameObject Enemy;
+
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -22,13 +24,14 @@ public class PlayerMovement : NetworkBehaviour
     [HideInInspector]
     public bool canMove = true;
     // Start is called before the first frame update
-    void Awake()
+    public override void OnNetworkSpawn()
     {
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        if (!IsOwner) { playerCamera.gameObject.SetActive(false); }
     }
 
     // Update is called once per frame
@@ -73,6 +76,17 @@ public class PlayerMovement : NetworkBehaviour
             transform.position = new Vector3(0, 1, 0);
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EnemyServerRpc();
+        }
+      
+    }
+    [ServerRpc]   
+    public void EnemyServerRpc()
+    {
+        GameObject g = Instantiate(Enemy);
+        g.GetComponent<NetworkObject>().Spawn(true);
     }
 }
 

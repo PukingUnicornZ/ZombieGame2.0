@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1919506769
+  GlobalObjectIdHash: 948343421
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22156f1aa112d1847930bd1005269e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  damagedColour: {fileID: 2100000, guid: 789b34d26240b3b4fabbb39ecf526310, type: 2}
 --- !u!114 &4572539699827655447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,9 +162,9 @@ MonoBehaviour:
   SyncRotAngleX: 1
   SyncRotAngleY: 1
   SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
   PositionThreshold: 0.001
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01

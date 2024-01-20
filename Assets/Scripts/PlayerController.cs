@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private float range;
+
+    [SerializeField] private int dmg;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +36,7 @@ public class PlayerController : MonoBehaviour
             Enemy target = hit.transform.GetComponent<Enemy>();
             if (target != null)
             {
-                target.Die();
+                target.DamageServerRpc(dmg);
 
             }
         }
