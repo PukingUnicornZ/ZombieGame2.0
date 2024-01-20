@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   gunName: AWP
+  auto: 0
   dmg: 100
-  firerate: 0
+  firerate: 1
   maxAmmo: 0
+  shotgun: 0
+  shotgunBullets: 0
+  spreadFactor: 0

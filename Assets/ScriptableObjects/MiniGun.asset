@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: MiniGun
   m_EditorClassIdentifier: 
   gunName: MiniGun
-  dmg: 5
-  firerate: 0
+  auto: 1
+  dmg: 100
+  firerate: 1e-10
   maxAmmo: 0
+  shotgun: 0
+  shotgunBullets: 0
+  spreadFactor: 0

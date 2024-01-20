@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc70eda224bff044f9df8a40c57ca120, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  gunName: 
+  gunName: Shotgun
   auto: 0
-  dmg: 0
-  firerate: 0
+  dmg: 20
+  firerate: 0.5
   maxAmmo: 0
-  shotgun: 0
-  shotgunBullets: 0
-  spreadFactor: 0
+  shotgun: 1
+  shotgunBullets: 10
+  spreadFactor: 0.15
