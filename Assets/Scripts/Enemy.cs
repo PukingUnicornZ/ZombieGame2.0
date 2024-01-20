@@ -4,8 +4,10 @@ using UnityEngine;
 using Unity.Netcode;
 public class Enemy : NetworkBehaviour
 {
+    [SerializeField] private int maxHealth = 60;
     [SerializeField] private int health = 100;
-    [SerializeField] private Material damagedColour;
+    [SerializeField] float Redness;
+    Color c = Color.red;
 
     // Start is called before the first frame update
     void Start()
@@ -16,33 +18,38 @@ public class Enemy : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y < 0)
+        {
+            DestroyEnemyServerRpc();
+        }
+    }
 
-    }
-    public void Die()
-    {
-        DestroyEnemyServerRpc();
-    }
     [ServerRpc(RequireOwnership = false)]
     public void DestroyEnemyServerRpc()
     {
         Destroy(gameObject);
+        UIManager u = FindObjectOfType<UIManager>();
+        u.killCount++;
+        u.updateKillText();
     }
     [ServerRpc(RequireOwnership = false)]
     public void DamageServerRpc(int value)
     {
         DamageClientRpc(value);
+
+
     }
     [ClientRpc]
     public void DamageClientRpc(int value)
     {
         health -= value;
+   
+        Redness = 1f / (float)maxHealth * (float)health;
+        c.r = Redness;
+        gameObject.GetComponent<Renderer>().material.color = c;
         if (health <= 0)
         {
             DestroyEnemyServerRpc();
-        }
-        if (health <= 50)
-        {
-            gameObject.GetComponent<Renderer>().material = damagedColour;
         }
     }
 }

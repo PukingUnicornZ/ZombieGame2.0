@@ -26,6 +26,7 @@ public class PlayerMovement : NetworkBehaviour
     // Start is called before the first frame update
     public override void OnNetworkSpawn()
     {
+        transform.position = new Vector3(0, 3, -7);
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
@@ -76,7 +77,7 @@ public class PlayerMovement : NetworkBehaviour
             transform.position = new Vector3(0, 1, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKey(KeyCode.P))
         {
             EnemyServerRpc();
         }
