@@ -27,11 +27,18 @@ public class PlayerMovement : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         characterController = GetComponent<CharacterController>();
+        gameObject.name = "player" + OwnerClientId;
+
+
 
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        if (!IsOwner) { playerCamera.enabled = false; }
+        if (!IsOwner) { 
+            playerCamera.enabled = false;
+            playerCamera.gameObject.GetComponent<AudioListener>().enabled = false;
+        
+        }
     }
     private void Start()
     {

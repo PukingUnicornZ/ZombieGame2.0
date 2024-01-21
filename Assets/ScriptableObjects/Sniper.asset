@@ -17,6 +17,7 @@ MonoBehaviour:
   dmg: 100
   firerate: 1
   maxAmmo: 0
+  model: {fileID: 6353488284469618510, guid: 4945ebc2a9591454993c9fe845a7eccb, type: 3}
   shotgun: 0
   shotgunBullets: 0
   spreadFactor: 0

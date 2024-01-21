@@ -14,6 +14,9 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private Gun[] guns;
     [SerializeField] private Gun currentGun;
     [SerializeField] private int currentGunID;
+    [SerializeField] private GameObject currentGunModel;
+
+
 
     [SerializeField] private float shootDelay;
     [SerializeField] private bool canShoot;
@@ -22,6 +25,7 @@ public class PlayerController : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         currentGun = guns[currentGunID];
+
     }
 
     // Update is called once per frame
@@ -35,6 +39,7 @@ public class PlayerController : NetworkBehaviour
             {
                 currentGunID++;
                 currentGun = guns[currentGunID];
+                setGunModelServerRpc(currentGunID);
             }
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // down
@@ -43,6 +48,7 @@ public class PlayerController : NetworkBehaviour
             {
                 currentGunID--;
                 currentGun = guns[currentGunID];
+                setGunModelServerRpc(currentGunID);
             }
         }
         if (Input.GetKey(KeyCode.Mouse0))
@@ -69,7 +75,24 @@ public class PlayerController : NetworkBehaviour
             shootDelay += Time.deltaTime;
         }
     }
+    [ServerRpc(RequireOwnership = false)]
+    void setGunModelServerRpc(int gunID)
+    {
+        setGunModelClientRpc(gunID, (int)OwnerClientId);
+    }
 
+
+    [ClientRpc(RequireOwnership = false)]
+    void setGunModelClientRpc(int gunId,int playerId)
+    {
+        if (playerId == (int)OwnerClientId)
+        {
+            Destroy(currentGunModel);
+            GameObject gun = Instantiate(guns[gunId].model, cam.transform);
+            gun.transform.localPosition = new Vector3(0.5f, -0.35f, 0.55f);
+            currentGunModel = gun;
+        }
+    }
 
     void Shoot()
     {
