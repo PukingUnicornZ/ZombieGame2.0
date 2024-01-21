@@ -4,7 +4,6 @@ using UnityEngine;
 using Unity.Netcode;
 public class PlayerMovement : NetworkBehaviour
 {
-    public GameObject Enemy;
 
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -13,8 +12,6 @@ public class PlayerMovement : NetworkBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
-    Vector3 velocity;
-    bool isGrounded;
 
 
     CharacterController characterController;
@@ -81,22 +78,10 @@ public class PlayerMovement : NetworkBehaviour
 
 
         //Reset
-        if(transform.position.y < 0)
+        if (transform.position.y < 0)
         {
             transform.position = new Vector3(0, 1, 0);
         }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            EnemyServerRpc();
-        }
-      
-    }
-    [ServerRpc]   
-    public void EnemyServerRpc()
-    {
-        GameObject g = Instantiate(Enemy);
-        g.GetComponent<NetworkObject>().Spawn(true);
     }
 }
 
