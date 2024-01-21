@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 5725561868226600282}
   - component: {fileID: 5727609002251499302}
   - component: {fileID: 4572539699827655447}
-  - component: {fileID: 1526739827841980365}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -95,7 +94,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132485074034348965}
-  m_Material: {fileID: 13400000, guid: c0c320a550cd71b4e8e7f37f9c658a55, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -121,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 948343421
+  GlobalObjectIdHash: 1919506769
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -142,9 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22156f1aa112d1847930bd1005269e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 60
   health: 100
   Redness: 0
+  DeathEffect: {fileID: 79474094814398106, guid: fd2a3e02fbe82514990329111bc64d53, type: 3}
 --- !u!114 &4572539699827655447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,30 +176,3 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!54 &1526739827841980365
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132485074034348965}
-  serializedVersion: 4
-  m_Mass: 0.1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1

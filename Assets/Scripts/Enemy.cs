@@ -7,6 +7,7 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private int maxHealth = 60;
     [SerializeField] private int health = 100;
     [SerializeField] float Redness;
+    [SerializeField] private GameObject DeathEffect;
     Color c = Color.red;
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class Enemy : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.y < 0)
+        if (transform.position.y < 0)
         {
             DestroyEnemyServerRpc();
         }
@@ -27,6 +28,7 @@ public class Enemy : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void DestroyEnemyServerRpc()
     {
+        GameObject deathEffectInstance = Instantiate(DeathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         UIManager u = FindObjectOfType<UIManager>();
         u.killCount++;
@@ -43,7 +45,7 @@ public class Enemy : NetworkBehaviour
     public void DamageClientRpc(int value)
     {
         health -= value;
-   
+
         Redness = 1f / (float)maxHealth * (float)health;
         c.r = Redness;
         gameObject.GetComponent<Renderer>().material.color = c;
