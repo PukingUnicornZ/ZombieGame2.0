@@ -45,10 +45,10 @@ public class Enemy : NetworkBehaviour
     public void DamageClientRpc(int value)
     {
         health -= value;
-
+/*
         Redness = 1f / (float)maxHealth * (float)health;
         c.r = Redness;
-        gameObject.GetComponent<Renderer>().material.color = c;
+        gameObject.GetComponent<Renderer>().material.color = c;*/
         if (health <= 0)
         {
             DestroyEnemyServerRpc();

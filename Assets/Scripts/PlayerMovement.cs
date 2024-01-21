@@ -26,15 +26,17 @@ public class PlayerMovement : NetworkBehaviour
     // Start is called before the first frame update
     public override void OnNetworkSpawn()
     {
-        transform.position = new Vector3(0, 3, -7);
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        if (!IsOwner) { playerCamera.gameObject.SetActive(false); }
+        if (!IsOwner) { playerCamera.enabled = false; }
     }
-
+    private void Start()
+    {
+        transform.position = new Vector3(0, 5, -7);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -77,7 +79,7 @@ public class PlayerMovement : NetworkBehaviour
             transform.position = new Vector3(0, 1, 0);
         }
 
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             EnemyServerRpc();
         }
