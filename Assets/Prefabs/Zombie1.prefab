@@ -2148,7 +2148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   health: 100
-  Redness: 0
   DeathEffect: {fileID: 79474094814398106, guid: fd2a3e02fbe82514990329111bc64d53, type: 3}
 --- !u!1 &5736558611483290896
 GameObject:

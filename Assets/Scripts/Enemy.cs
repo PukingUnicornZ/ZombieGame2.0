@@ -6,14 +6,16 @@ public class Enemy : NetworkBehaviour
 {
     [SerializeField] private int maxHealth = 60;
     [SerializeField] private int health = 100;
-    [SerializeField] float Redness;
     [SerializeField] private GameObject DeathEffect;
-    Color c = Color.red;
+
+
+    private EnemySpawner spawner;
+
 
     // Start is called before the first frame update
     void Start()
     {
-
+        spawner = FindObjectOfType<EnemySpawner>();
     }
 
     // Update is called once per frame
@@ -28,30 +30,36 @@ public class Enemy : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void DestroyEnemyServerRpc()
     {
-        GameObject deathEffectInstance = Instantiate(DeathEffect, transform.position, Quaternion.identity);
+        spawner.enemyAmount.Value--;
+        spawner.enemyKillCount.Value++;
         Destroy(gameObject);
-        UIManager u = FindObjectOfType<UIManager>();
-        u.killCount++;
-        u.updateKillText();
+
+
+
+        DieClientRpc();
     }
     [ServerRpc(RequireOwnership = false)]
     public void DamageServerRpc(int value)
     {
         DamageClientRpc(value);
-
-
     }
     [ClientRpc]
     public void DamageClientRpc(int value)
     {
         health -= value;
-/*
-        Redness = 1f / (float)maxHealth * (float)health;
-        c.r = Redness;
-        gameObject.GetComponent<Renderer>().material.color = c;*/
         if (health <= 0)
         {
             DestroyEnemyServerRpc();
         }
     }
+    [ClientRpc]
+    public void DieClientRpc()
+    {
+        //Invoke
+        print(spawner.enemyAmount.Value);
+        GameObject deathEffectInstance = Instantiate(DeathEffect, transform.position, Quaternion.identity);
+        UIManager u = FindObjectOfType<UIManager>();
+        u.updateKillText();
+    }
+
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: AK-47
   auto: 1
-  dmg: 30
+  dmg: 50
   firerate: 0.2
   maxAmmo: 0
   model: {fileID: 939231035953415657, guid: a7cc1ff82d8bd9e4f9f0d0891b751fd5, type: 3}
