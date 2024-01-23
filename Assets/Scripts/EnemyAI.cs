@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Transform target;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        target = GameObject.FindWithTag("Player").transform;
+        if(target != null)
+        {
+            agent.SetDestination(target.position);
+        }
     }
 }
