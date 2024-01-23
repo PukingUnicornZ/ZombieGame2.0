@@ -27,29 +27,33 @@ public class EnemySpawner : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+
         enemyDEBUG = enemyAmount.Value;
         enemyDEBUG2 = enemyKillCount.Value;
-        if (IsSpawned)
+        if (IsServer)
         {
-
-            if (spawnTimer > spawnCooldown)
+            if (IsSpawned)
             {
-                if (enemyAmount.Value < enemyLimit)
+
+                if (spawnTimer > spawnCooldown)
                 {
-                    spawnTimer = 0;
+                    if (enemyAmount.Value < enemyLimit)
+                    {
+                        spawnTimer = 0;
+                        EnemyServerRpc();
+                    }
+                }
+                else
+                {
+                    spawnTimer += Time.deltaTime;
+                }
+
+
+
+                if (Input.GetKeyDown(KeyCode.P))
+                {
                     EnemyServerRpc();
                 }
-            }
-            else
-            {
-                spawnTimer += Time.deltaTime;
-            }
-
-
-
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                EnemyServerRpc();
             }
         }
 

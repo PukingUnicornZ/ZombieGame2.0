@@ -32,9 +32,16 @@ public class UIManager : MonoBehaviour
     }
     public void updateKillText()
     {
+        StartCoroutine(updateTxt());
+    }
+
+    IEnumerator updateTxt()
+    {
+        yield return new WaitForSeconds(0.1f);
         KillTxt.text = "Kills: " + spawner.enemyKillCount.Value;
         EnemyCountTxt.text = "Enemies: " + spawner.enemyAmount.Value;
     }
+
 
 
 

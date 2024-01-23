@@ -32,11 +32,9 @@ public class Enemy : NetworkBehaviour
     {
         spawner.enemyAmount.Value--;
         spawner.enemyKillCount.Value++;
-        Destroy(gameObject);
-
-
 
         DieClientRpc();
+        Destroy(gameObject);
     }
     [ServerRpc(RequireOwnership = false)]
     public void DamageServerRpc(int value)
@@ -55,11 +53,10 @@ public class Enemy : NetworkBehaviour
     [ClientRpc]
     public void DieClientRpc()
     {
-        //Invoke
-        print(spawner.enemyAmount.Value);
+        print("kill");
         GameObject deathEffectInstance = Instantiate(DeathEffect, transform.position, Quaternion.identity);
         UIManager u = FindObjectOfType<UIManager>();
         u.updateKillText();
     }
-
+    
 }
