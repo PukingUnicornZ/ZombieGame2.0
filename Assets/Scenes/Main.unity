@@ -9380,10 +9380,10 @@ MonoBehaviour:
   - {fileID: 2001555787}
   - {fileID: 1283185174}
   - {fileID: 1397603934}
-  Enemy: {fileID: 5539601271610874079, guid: 3ccd0c3aea548764694ee59821561cc4, type: 3}
-  spawnCooldown: 1
+  Enemy: {fileID: 5539601271610874079, guid: 80987f83b3342974ea1d17d2c96568fc, type: 3}
+  spawnCooldown: 1000
   spawnTimer: 0
-  enemyLimit: 50
+  enemyLimit: 500
   enemyAmount:
     m_InternalValue: 0
   enemyKillCount:
@@ -17319,9 +17319,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.23333333
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 9160f7009d1325e47a4d4ae2d428f2a9, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9066010a63a3d514d9ee63235c0bee57, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1754451183 stripped
 GameObject:
@@ -19975,7 +19975,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
