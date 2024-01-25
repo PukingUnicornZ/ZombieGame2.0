@@ -9381,7 +9381,7 @@ MonoBehaviour:
   - {fileID: 1283185174}
   - {fileID: 1397603934}
   Enemy: {fileID: 4257585888167731352, guid: d19e71d13c5d1c441ad3a33c85d31c8f, type: 3}
-  spawnCooldown: 10
+  spawnCooldown: 1000
   spawnTimer: 0
   enemyLimit: 500
   enemyAmount:
@@ -17932,7 +17932,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1823762206}
-    PlayerPrefab: {fileID: 6684708789989732989, guid: ab272530cb0b67c4daa3e0bb46092096, type: 3}
+    PlayerPrefab: {fileID: 5658716360287774073, guid: 972b3573929fc1c42a4a943eebf2e47e, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 5d5d6e165c66ae948a753198e25e8a22, type: 2}
@@ -19932,6 +19932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043441580}
   - component: {fileID: 2043441579}
+  - component: {fileID: 2043441581}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -20005,6 +20006,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 40, y: 210, z: 0}
+--- !u!95 &2043441581
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043441577}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 660e5f1967987d4408f6ae5907d69b9f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2045030562
 PrefabInstance:
   m_ObjectHideFlags: 0
