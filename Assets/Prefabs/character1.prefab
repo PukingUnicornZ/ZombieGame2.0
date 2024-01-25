@@ -2173,6 +2173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6613783811324424775}
+  body: {fileID: 5403648264930770133}
   range: 99
   dmg: 40
   guns:
@@ -2183,6 +2184,11 @@ MonoBehaviour:
   currentGun: {fileID: 0}
   currentGunID: 0
   currentGunModel: {fileID: 0}
+  playerTextures:
+  - {fileID: 2800000, guid: 462764d19f1881a448da081479f551ef, type: 3}
+  - {fileID: 2800000, guid: f3b411718c39eb74fb16f921034d6548, type: 3}
+  - {fileID: 2800000, guid: 650198e412a690c49b965b7e7817f3c2, type: 3}
+  - {fileID: 2800000, guid: 79a76738c9277534092f8c0914d298b1, type: 3}
   shootDelay: 0
   canShoot: 0
 --- !u!114 &4623150739550626961

@@ -7,7 +7,7 @@ using Unity.Netcode;
 public class PlayerController : NetworkBehaviour
 {
     [SerializeField] private Camera cam;
-
+    [SerializeField] private Transform body;
     [SerializeField] private float range;
 
     [SerializeField] private int dmg;
@@ -16,6 +16,8 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private Gun currentGun;
     [SerializeField] private int currentGunID;
     [SerializeField] private GameObject currentGunModel;
+
+    [SerializeField] private Texture[] playerTextures;
 
 
 
@@ -26,7 +28,11 @@ public class PlayerController : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         currentGun = guns[currentGunID];
-
+        if ((int)OwnerClientId < 4)
+        {
+            body.GetComponent<SkinnedMeshRenderer>().material.mainTexture = playerTextures[(int)OwnerClientId];
+            
+        }
     }
 
     // Update is called once per frame
