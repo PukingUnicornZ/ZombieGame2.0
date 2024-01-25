@@ -9380,8 +9380,8 @@ MonoBehaviour:
   - {fileID: 2001555787}
   - {fileID: 1283185174}
   - {fileID: 1397603934}
-  Enemy: {fileID: 5539601271610874079, guid: 80987f83b3342974ea1d17d2c96568fc, type: 3}
-  spawnCooldown: 1000
+  Enemy: {fileID: 4257585888167731352, guid: d19e71d13c5d1c441ad3a33c85d31c8f, type: 3}
+  spawnCooldown: 10
   spawnTimer: 0
   enemyLimit: 500
   enemyAmount:

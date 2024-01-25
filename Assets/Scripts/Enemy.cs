@@ -9,6 +9,8 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private GameObject DeathEffect;
 
 
+    private bool dead;
+
     private EnemySpawner spawner;
 
 
@@ -45,8 +47,9 @@ public class Enemy : NetworkBehaviour
     public void DamageClientRpc(int value)
     {
         health -= value;
-        if (health <= 0)
+        if (health <= 0 && dead == false)
         {
+            dead = true;
             DestroyEnemyServerRpc();
         }
     }
