@@ -96,7 +96,7 @@ public class PlayerController : NetworkBehaviour
         {
             Destroy(currentGunModel);
             GameObject gun = Instantiate(guns[gunId].model, cam.transform);
-            gun.transform.localPosition = new Vector3(0.125f, -0.2f, 0.63f);
+            gun.transform.localPosition = new Vector3(0.225f, -0.2f, 0.63f);
             currentGunModel = gun;
         }
     }
