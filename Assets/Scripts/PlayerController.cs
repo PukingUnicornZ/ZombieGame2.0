@@ -141,7 +141,15 @@ public class PlayerController : NetworkBehaviour
                     Enemy target = hit.transform.GetComponent<Enemy>();
                     if (target != null)
                     {
-                        target.DamageServerRpc(currentGun.dmg);
+                        print(hit.transform.gameObject);
+                        if (hit.collider.tag == "Head")
+                        {
+                            target.DamageServerRpc(currentGun.dmg * 2);
+                        }
+                        else
+                        {
+                            target.DamageServerRpc(currentGun.dmg);
+                        }
 
                     }
                 }
