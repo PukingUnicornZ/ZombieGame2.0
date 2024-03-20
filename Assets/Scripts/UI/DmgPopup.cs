@@ -8,9 +8,12 @@ public class DmgPopup : MonoBehaviour
     [SerializeField] private float lifeTime = 0.5f;
     private float currentTime;
     [SerializeField] private TextMeshProUGUI txt;
+    public enum Colors { red,orange,white }
+    Colors currentColor;
     private void Start()
     {
         currentTime = lifeTime;
+        currentColor = Colors.white;
     }
     void Update()
     {
@@ -25,7 +28,11 @@ public class DmgPopup : MonoBehaviour
     }
     public void setValue(int v)
     {
-        txt.text = "" + v;
-
+        txt.text = "<color=\"" + currentColor + "\">" + v + "</color>";
+    }
+    public void setColor(Colors c)
+    {
+        currentColor = c;
+        print(currentColor);
     }
 }

@@ -40,21 +40,35 @@ public class Enemy : NetworkBehaviour
         Destroy(gameObject);
     }
     [ServerRpc(RequireOwnership = false)]
-    public void DamageServerRpc(int value)
+    public void DamageServerRpc(int value,bool crit)
     {
-        DamageClientRpc(value);
+        DamageClientRpc(value,crit);
     }
     [ClientRpc]
-    public void DamageClientRpc(int value)
+    public void DamageClientRpc(int value,bool crit)
     {
         health -= value;
         Transform t = effectSpawnLocation;
-        DmgPopup popup = Instantiate(DmgPopup, new Vector3(t.position.x, t.position.y,t.position.z), Quaternion.identity).GetComponent<DmgPopup>();
+
+        Vector3 v = new Vector3(t.position.x + Random.Range(-0.4f,0.4f), t.position.y + Random.Range(-0.4f, 0.4f), t.position.z);
+
+
+        DmgPopup popup = Instantiate(DmgPopup, v, Quaternion.identity).GetComponent<DmgPopup>();
         popup.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 180,transform.eulerAngles.z);
+        if (crit)
+        {
+            popup.setColor(global::DmgPopup.Colors.red);
+            popup.gameObject.transform.localScale = new Vector3(0.008f, 0.008f, 0.01f);
+        }
+        else
+        {
+            popup.setColor(global::DmgPopup.Colors.white);
+            popup.gameObject.transform.localScale = new Vector3(0.005f, 0.005f, 0.01f);
+        }
         popup.setValue(value);
+
         if (health <= 0 && dead == false)
         {
-
             dead = true;
             DestroyEnemyServerRpc();
         }

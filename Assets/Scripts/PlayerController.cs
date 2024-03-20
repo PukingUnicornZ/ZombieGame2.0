@@ -144,11 +144,11 @@ public class PlayerController : NetworkBehaviour
                         print(hit.transform.gameObject);
                         if (hit.collider.tag == "Head")
                         {
-                            target.DamageServerRpc(currentGun.dmg * 2);
+                            target.DamageServerRpc(currentGun.dmg * 2,true);
                         }
                         else
                         {
-                            target.DamageServerRpc(currentGun.dmg);
+                            target.DamageServerRpc(currentGun.dmg,false);
                         }
 
                     }
@@ -169,9 +169,13 @@ public class PlayerController : NetworkBehaviour
                     if (Physics.Raycast(cam.transform.position, forward, out hit, range))
                     {
                         Enemy target = hit.transform.GetComponent<Enemy>();
+                        if (hit.collider.tag == "Head")
+                        {
+                            target.DamageServerRpc(currentGun.dmg * 2, true);
+                        }
                         if (target != null)
                         {
-                            target.DamageServerRpc(currentGun.dmg);
+                            target.DamageServerRpc(currentGun.dmg,false);
 
                         }
                     }
