@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc70eda224bff044f9df8a40c57ca120, type: 3}
-  m_Name: AK
+  m_Name: Smg
   m_EditorClassIdentifier: 
-  gunName: AK-47
+  gunName: Smg
   auto: 1
-  dmg: 50
-  firerate: 0.2
-  maxAmmo: 0
-  model: {fileID: 1487774384131766, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+  dmg: 100
+  firerate: 1e-10
+  maxAmmo: 2147483647
+  model: {fileID: 1095254202041702, guid: 6273e2936e9d6a24e9f64c7c70d6bd19, type: 3}
   shotgun: 0
   shotgunBullets: 0
   spreadFactor: 0

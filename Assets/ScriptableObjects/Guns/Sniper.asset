@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: AWP
   auto: 0
-  dmg: 100
+  dmg: 250
   firerate: 1
-  maxAmmo: 0
+  maxAmmo: 5
   model: {fileID: 1829597508155286, guid: 7359baf27e84aa44cafac3788c8be0f1, type: 3}
   shotgun: 0
   shotgunBullets: 0

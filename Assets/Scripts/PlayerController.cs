@@ -23,41 +23,46 @@ public class PlayerController : NetworkBehaviour
 
     [SerializeField] private float shootDelay;
     [SerializeField] private bool canShoot;
+    [SerializeField] private int currentAmmo;
+
+    private UIManager uIManager;
 
     // Start is called before the first frame update
     public override void OnNetworkSpawn()
     {
+        uIManager = FindObjectOfType<UIManager>();
         currentGun = guns[currentGunID];
         if ((int)OwnerClientId < 4)
         {
             body.GetComponent<SkinnedMeshRenderer>().material.mainTexture = playerTextures[(int)OwnerClientId];
-            
+
         }
+        setGun();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!IsOwner) { return; }
-
+        //Weapon selecting
         if (Input.GetAxis("Mouse ScrollWheel") > 0f) // up
         {
             if (currentGunID < guns.Length - 1)
             {
                 currentGunID++;
-                currentGun = guns[currentGunID];
-                setGunModelServerRpc(currentGunID);
+                setGun();
             }
         }
+
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // down
         {
             if (currentGunID > 0)
             {
                 currentGunID--;
-                currentGun = guns[currentGunID];
-                setGunModelServerRpc(currentGunID);
+                setGun();
             }
         }
+        //Shooting
         if (Input.GetKey(KeyCode.Mouse0))
         {
             if (shootDelay > currentGun.firerate)
@@ -73,6 +78,10 @@ public class PlayerController : NetworkBehaviour
                 }
             }
         }
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            Reload();
+        }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             canShoot = true;
@@ -82,6 +91,15 @@ public class PlayerController : NetworkBehaviour
             shootDelay += Time.deltaTime;
         }
     }
+    void setGun()
+    {
+        currentGun = guns[currentGunID];
+        currentAmmo = currentGun.maxAmmo;
+        setGunModelServerRpc(currentGunID);
+        uIManager.updateAmmoUI(currentAmmo, currentGun.maxAmmo);
+    }
+
+
     [ServerRpc(RequireOwnership = false)]
     void setGunModelServerRpc(int gunID)
     {
@@ -100,44 +118,54 @@ public class PlayerController : NetworkBehaviour
             currentGunModel = gun;
         }
     }
+    void Reload()
+    {
+        currentAmmo = currentGun.maxAmmo;
+        uIManager.updateAmmoUI(currentAmmo, currentGun.maxAmmo);
+    }
 
     void Shoot()
     {
-        if (!currentGun.shotgun)
+        if (currentAmmo > 0)
         {
-            shootDelay = 0;
-            canShoot = false;
-            //Raycasting
-            RaycastHit hit;
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+            currentAmmo--;
+            uIManager.updateAmmoUI(currentAmmo,currentGun.maxAmmo);
+            if (!currentGun.shotgun)
             {
-                Enemy target = hit.transform.GetComponent<Enemy>();
-                if (target != null)
-                {
-                    target.DamageServerRpc(currentGun.dmg);
-
-                }
-            }
-        }
-        else
-        {
-            shootDelay = 0;
-            for (int i = 0; i < currentGun.shotgunBullets; i++)
-            {
-                Vector3 fwd = cam.transform.forward;
-                fwd.x += Random.Range(-currentGun.spreadFactor, currentGun.spreadFactor);
-                fwd.y += Random.Range(-currentGun.spreadFactor, currentGun.spreadFactor);
-                fwd.z += Random.Range(-currentGun.spreadFactor, currentGun.spreadFactor);
-                Vector3 forward = fwd * range;
-                Debug.DrawRay(transform.position, forward, Color.red, 10);
+                shootDelay = 0;
+                canShoot = false;
+                //Raycasting
                 RaycastHit hit;
-                if (Physics.Raycast(cam.transform.position, forward, out hit, range))
+                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
                 {
                     Enemy target = hit.transform.GetComponent<Enemy>();
                     if (target != null)
                     {
                         target.DamageServerRpc(currentGun.dmg);
 
+                    }
+                }
+            }
+            else
+            {
+                shootDelay = 0;
+                for (int i = 0; i < currentGun.shotgunBullets; i++)
+                {
+                    Vector3 fwd = cam.transform.forward;
+                    fwd.x += Random.Range(-currentGun.spreadFactor, currentGun.spreadFactor);
+                    fwd.y += Random.Range(-currentGun.spreadFactor, currentGun.spreadFactor);
+                    fwd.z += Random.Range(-currentGun.spreadFactor, currentGun.spreadFactor);
+                    Vector3 forward = fwd * range;
+                    Debug.DrawRay(transform.position, forward, Color.red, 10);
+                    RaycastHit hit;
+                    if (Physics.Raycast(cam.transform.position, forward, out hit, range))
+                    {
+                        Enemy target = hit.transform.GetComponent<Enemy>();
+                        if (target != null)
+                        {
+                            target.DamageServerRpc(currentGun.dmg);
+
+                        }
                     }
                 }
             }

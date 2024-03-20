@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc70eda224bff044f9df8a40c57ca120, type: 3}
-  m_Name: DEATH
+  m_Name: AK
   m_EditorClassIdentifier: 
-  gunName: DEATH
+  gunName: AK-47
   auto: 1
-  dmg: 100
-  firerate: 1e-12
-  maxAmmo: 0
-  shotgun: 1
-  shotgunBullets: 20
-  spreadFactor: 1
+  dmg: 50
+  firerate: 0.15
+  maxAmmo: 30
+  model: {fileID: 1487774384131766, guid: ee329c3cd08e58645834d20702d7f6c6, type: 3}
+  shotgun: 0
+  shotgunBullets: 0
+  spreadFactor: 0

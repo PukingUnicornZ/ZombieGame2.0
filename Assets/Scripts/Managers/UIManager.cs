@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI KillTxt;
     [SerializeField] private TextMeshProUGUI FPSTxt;
 
+    [SerializeField] private TextMeshProUGUI WaveTxt;
+    [SerializeField] private TextMeshProUGUI AmmoTxt;
+
 
     [SerializeField] private TextMeshProUGUI EnemyCountTxt;
 
@@ -34,12 +37,32 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(updateTxt());
     }
-
+    public void updateAmmoUI(int cur,int max)
+    {
+        if (cur == 0)
+        {
+            AmmoTxt.text =  "<color=\"red\">" + cur + "</color>" + "/" + max;
+            AmmoTxt.GetComponent<UIPop>().Pop();
+        }
+        else
+        {
+            AmmoTxt.text = cur + "/" + max;
+        }
+    }
     IEnumerator updateTxt()
     {
         yield return new WaitForSeconds(0.1f);
-        KillTxt.text = "Kills: " + spawner.enemyKillCount.Value;
+        if (KillTxt.text != "Kills: " + spawner.enemyKillCount.Value)
+        {
+            KillTxt.text = "Kills: " + spawner.enemyKillCount.Value;
+            KillTxt.GetComponent<UIPop>().Pop();
+        }
         EnemyCountTxt.text = "Enemies: " + spawner.enemyAmount.Value;
+        if (WaveTxt.text != "Wave: " + spawner.waveCount.Value)
+        {
+            WaveTxt.text = "Wave: " + spawner.waveCount.Value;
+            WaveTxt.GetComponent<UIPop>().Pop();
+        }
     }
 
 

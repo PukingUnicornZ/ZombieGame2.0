@@ -10,6 +10,9 @@ public class PlayerMovement : NetworkBehaviour
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Camera playerCamera;
+    public SkinnedMeshRenderer modelRenderer;
+
+
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
 
@@ -35,6 +38,10 @@ public class PlayerMovement : NetworkBehaviour
             playerCamera.enabled = false;
             playerCamera.gameObject.GetComponent<AudioListener>().enabled = false;
         
+        }
+        else
+        {
+            modelRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
         }
     }
     private void Start()

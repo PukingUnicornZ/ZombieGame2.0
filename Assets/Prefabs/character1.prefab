@@ -1099,7 +1099,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2611242973284051142}
   serializedVersion: 2
-  m_LocalRotation: {x: 7.754818e-26, y: 2.2535118e-23, z: -4.2262002e-22, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.8981815e-14, y: 0.097166136, z: 0.018032204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1492,6 +1492,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6876877977692325680}
+  - component: {fileID: 1900056118265088007}
   m_Layer: 0
   m_Name: RightArm
   m_TagString: Untagged
@@ -1515,6 +1516,19 @@ Transform:
   - {fileID: 1860025777810129114}
   m_Father: {fileID: 5684295825823168078}
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+--- !u!114 &1900056118265088007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642373090198013368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa68b9433207e244bf27a44bde9b0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 8678132738340455125}
 --- !u!1 &3663471335002536452
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,6 +2171,7 @@ MonoBehaviour:
   jumpSpeed: 8
   gravity: 20
   playerCamera: {fileID: 6613783811324424775}
+  modelRenderer: {fileID: 4437214630515848401}
   lookSpeed: 2
   lookXLimit: 90
   canMove: 1
