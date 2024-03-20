@@ -5950,7 +5950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9676ad0260e7a438f3c53d0ed31c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popMax: 0.5
+  popMax: 1
   popTime: 0.1
 --- !u!1 &509489543
 GameObject:

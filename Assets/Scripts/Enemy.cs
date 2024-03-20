@@ -7,7 +7,8 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private int maxHealth = 60;
     [SerializeField] private int health = 100;
     [SerializeField] private GameObject DeathEffect;
-
+    [SerializeField] private GameObject DmgPopup;
+    [SerializeField] private Transform effectSpawnLocation;
 
     private bool dead;
 
@@ -47,8 +48,13 @@ public class Enemy : NetworkBehaviour
     public void DamageClientRpc(int value)
     {
         health -= value;
+        Transform t = effectSpawnLocation;
+        DmgPopup popup = Instantiate(DmgPopup, new Vector3(t.position.x, t.position.y,t.position.z), Quaternion.identity).GetComponent<DmgPopup>();
+        popup.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 180,transform.eulerAngles.z);
+        popup.setValue(value);
         if (health <= 0 && dead == false)
         {
+
             dead = true;
             DestroyEnemyServerRpc();
         }

@@ -32,6 +32,37 @@ Transform:
   - {fileID: 8543978847648279235}
   m_Father: {fileID: 5348463423751874540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &185316011968594705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3338019992458080674}
+  m_Layer: 0
+  m_Name: EffectSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3338019992458080674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185316011968594705}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4916685280267099584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &426929922868125552
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +585,7 @@ Transform:
   m_Children:
   - {fileID: 7629900042775607088}
   - {fileID: 4385469479152496120}
+  - {fileID: 3338019992458080674}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7379451261515992934
@@ -623,6 +655,8 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   DeathEffect: {fileID: 79474094814398106, guid: fd2a3e02fbe82514990329111bc64d53, type: 3}
+  DmgPopup: {fileID: 1798110623771402041, guid: 8b3750de3e848c3429af3b5021413eae, type: 3}
+  effectSpawnLocation: {fileID: 3338019992458080674}
 --- !u!114 &4430015401013561759
 MonoBehaviour:
   m_ObjectHideFlags: 0

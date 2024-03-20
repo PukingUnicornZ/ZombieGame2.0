@@ -16,8 +16,8 @@ MonoBehaviour:
   auto: 1
   dmg: 100
   firerate: 1e-10
-  maxAmmo: 2147483647
+  maxAmmo: 2000
   model: {fileID: 1095254202041702, guid: 6273e2936e9d6a24e9f64c7c70d6bd19, type: 3}
-  shotgun: 0
-  shotgunBullets: 0
-  spreadFactor: 0
+  shotgun: 1
+  shotgunBullets: 20
+  spreadFactor: 0.15
