@@ -20,9 +20,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private EnemySpawner spawner;
 
 
-    bool serverHost = false;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -86,18 +83,12 @@ public class UIManager : MonoBehaviour
         NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.Address = ip;
     }
 
-    public void setServerHost(bool b)
-    {
-        serverHost = b;
-    }
-
     public void startHost(bool overrideIP)
     {
         Selection.SetActive(false);
         NetworkManager.Singleton.StartHost();
 
-
-        if (overrideIP && serverHost) NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = "192.168.178.15";
+        if (overrideIP) NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = "192.168.178.15";
         else NetworkManager.Singleton.GetComponent<UnityTransport>().ConnectionData.ServerListenAddress = "";
     }
 }
