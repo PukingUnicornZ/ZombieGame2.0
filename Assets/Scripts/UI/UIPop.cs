@@ -6,6 +6,8 @@ public class UIPop : MonoBehaviour
 {
     [SerializeField] private float popMax;
     [SerializeField] private float popTime;
+    [SerializeField] private bool repeatMode;
+
     private bool popping;
     private bool reverse;
 
@@ -16,6 +18,10 @@ public class UIPop : MonoBehaviour
     private void Start()
     {
         rect = GetComponent<RectTransform>();
+        if (repeatMode)
+        {
+            popping = true;
+        }
     }
     // Update is called once per frame
     void Update()
@@ -45,7 +51,7 @@ public class UIPop : MonoBehaviour
             else
             {
                 //lil reset
-                popping = false;
+                if (!repeatMode) { popping = false; }
                 reverse = false;
                 rect.transform.localScale = new Vector3(1,1,1);
             }
