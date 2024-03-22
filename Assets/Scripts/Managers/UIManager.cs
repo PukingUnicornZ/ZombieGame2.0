@@ -26,6 +26,27 @@ public class UIManager : MonoBehaviour
     {
         spawner = FindObjectOfType<EnemySpawner>();
         updateKillText();
+        //select mode
+        switch (SceneManager.gameType)
+        {
+            case 0:
+                setIP("83.83.116.240");
+                startHost(true);
+                break;
+            case 1:
+                setIP("83.83.116.240");
+                startClient(true);
+                break;
+            case 2:
+                setIP("127.0.0.1");
+                startHost(false);
+                break;
+            case 3:
+                setIP("127.0.0.1");
+                startClient(false);
+                break;
+        }
+
     }
 
     // Update is called once per frame
